@@ -17,7 +17,7 @@ int main()
 
 	//加载CT切片
 //	mc.LoadCTSlicerFromFiles("CT\\", ".dat",startID,endID, 512, 512);
-	mc.LoadCTSlicerFromFiles("CT/", ".dat",startID,endID, 512, 512);
+	mc.LoadCTSlicerFromFiles("CT/", ".dat",startID,endID, 950, 950);  // rock image on linux
 
 	//用mc算法重建出模型
 	MarchingCubeParam mcParam;

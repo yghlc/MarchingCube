@@ -140,7 +140,8 @@ void MCMeshReconstructor::Reconstruct(const MarchingCubeParam & mcInfo)
 					//用CT图对应位置是否是白色（也就是-1）来判断此点是不是在物体内部
 					//if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 255 ||
 					//	nextSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)
-					if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)
+					//if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)
+					if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 0)   // 0 for the damage voxels   hlc, 17 Sep 2018
 					{
 						//设置第i个二进制位
 						triangleCaseIndex |= (1 << i);
