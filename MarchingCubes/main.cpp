@@ -16,7 +16,8 @@ int main()
 	MCMeshReconstructor mc;
 
 	//加载CT切片
-	mc.LoadCTSlicerFromFiles("CT\\", ".dat",startID,endID, 512, 512);
+//	mc.LoadCTSlicerFromFiles("CT\\", ".dat",startID,endID, 512, 512);
+	mc.LoadCTSlicerFromFiles("CT/", ".dat",startID,endID, 512, 512);
 
 	//用mc算法重建出模型
 	MarchingCubeParam mcParam;
