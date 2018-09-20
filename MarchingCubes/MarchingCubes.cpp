@@ -142,7 +142,8 @@ void MCMeshReconstructor::Reconstruct(const MarchingCubeParam & mcInfo)
 					//	nextSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)
 					//if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)
 					//if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 0)   // 0 for the damage voxels   hlc, 17 Sep 2018
-					if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)   // 255 for the pore voxels   hlc, 17 Sep 2018
+//					//if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)   // 255 for the pore voxels   hlc, 17 Sep 2018
+					if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 4)
 					{
 						//设置第i个二进制位
 						triangleCaseIndex |= (1 << i);
