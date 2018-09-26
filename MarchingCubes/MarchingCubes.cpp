@@ -31,8 +31,13 @@ bool MCMeshReconstructor::LoadCTSlicerFromFiles(std::string fileNamePrefix, std:
 		std::string finalPath = fileNamePrefix;
 
 		//如果文件标号是有n位数字的，那么在前面就要补够0
-		if (i < 10)finalPath += "00";
-		else if (i < 100)finalPath += "0";
+//		if (i < 10)finalPath += "00";
+//		else if (i < 100)finalPath += "0";
+
+        // hlc for rock porosity
+        if (i < 10)finalPath += "000";
+		else if (i < 100)finalPath += "00";
+		else if (i<1000) finalPath += "0";
 
 		//计算最终文件路径
 		finalPath += std::to_string(i) + fileNameSubfix;
@@ -142,8 +147,8 @@ void MCMeshReconstructor::Reconstruct(const MarchingCubeParam & mcInfo)
 					//	nextSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)
 					//if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)
 					//if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 0)   // 0 for the damage voxels   hlc, 17 Sep 2018
-//					//if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)   // 255 for the pore voxels   hlc, 17 Sep 2018
-					if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 5)
+					if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 255)   // 255 for the pore voxels   hlc, 17 Sep 2018
+//					if (currentSlice.GetPixel(pixelCoordX, pixelCoordY) == 5)
 					{
 						//设置第i个二进制位
 						triangleCaseIndex |= (1 << i);
