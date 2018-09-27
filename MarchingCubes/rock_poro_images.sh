@@ -10,7 +10,7 @@ folder_scan60=/home/hlc/Data/rock/Synchrotron/6.5_L5_060_20MPa_116MPa_pag-0.36_3
 
 
 #org_image_dir=/home/hlc/Data/rock/Synchrotron/layer38_41_scan047_059_seg_change_images
-org_image_dir=${folder_scan60}
+org_image_dir=${folder_scan20}
 
 work_dir=/home/hlc/codes/PycharmProjects/yghlc_marchingcube/MarchingCubes/test_rock
 
@@ -19,8 +19,8 @@ cd ${work_dir}
 
 #scan20
 start_slice=0
-end_slice=600
-
+#end_slice=600
+end_slice=1599
 
 #
 rm -r CT
