@@ -8,31 +8,22 @@ folder_cb3='/home/hlc/Data/rock/Synchrotron/layer38_41_scan047_059_seg_change_im
 folder_cb2='/home/hlc/Data/rock/Synchrotron/layer51_54_scan047_057_seg_change_images'
 folder_cb1='/home/hlc/Data/rock/Synchrotron/layer67_72_scan047_056_seg_change_images'
 
-echo $folder_cb1
+# add CB1' and CB2' on 21 Jan 2019
+folder_cb1P='/home/hlc/Data/rock/Synchrotron/layer60_62_scan047_056_seg_change_images'
+folder_cb2P='/home/hlc/Data/rock/Synchrotron/layer46_47_scan047_054_seg_change_images'
+
+#echo $folder_cb1
 
 #org_image_dir=/home/hlc/Data/rock/Synchrotron/layer38_41_scan047_059_seg_change_images
-org_image_dir=${folder_cb2}
+org_image_dir=${folder_cb2P}
 
 work_dir=/home/hlc/codes/PycharmProjects/yghlc_marchingcube/MarchingCubes/test_rock
 
 cd ${work_dir}
 
-start_slice=0
-end_slice=900
 
 rm -r CT
 mkdir CT
-
-#for idx in $(seq -f "%03g" ${start_slice} ${end_slice});
-#do
-#    echo $idx
-#    # damage voxels
-##    gdal_translate -of ENVI ${org_image_dir}/*0${idx}_sub_mask_cov_damage.jpg CT/${idx}.dat
-#
-#    # pore voxels
-#    gdal_translate -of ENVI ${org_image_dir}/*0${idx}_sub_mask_seg.tif CT/${idx}.dat
-#
-#done
 
 
 #cb1
@@ -40,18 +31,24 @@ mkdir CT
 #end_slice=940
 
 #cb2
-start_slice=61
-end_slice=100
+#start_slice=61
+#end_slice=100
 
 #cb 3
 #start_slice=190
 #end_slice=230
 
+#cb1 prime
+#start_slice=980
+#end_slice=1010
 
+#cb2 prime
+start_slice=1130
+end_slice=1150
 
-for idx in $(seq -f "%03g" ${start_slice} ${end_slice});
-do
-    echo $idx
+#for idx in $(seq -f "%03g" ${start_slice} ${end_slice});
+#do
+#    echo $idx
     # damage voxels
 #    gdal_translate -of ENVI ${org_image_dir}/*0${idx}_sub_mask_cov_damage.jpg CT/${idx}.dat
 
@@ -63,9 +60,15 @@ do
 #    gdal_translate -of ENVI ${org_image_dir}/Layer_67_72_scan_047_056_0${idx}_changes_code.tif CT/${idx}.dat
 
      #cb 2
-    gdal_translate -of ENVI ${org_image_dir}/Layer_51_54_scan_047_057_1${idx}_changes_code.tif CT/${idx}.dat
+#    gdal_translate -of ENVI ${org_image_dir}/Layer_51_54_scan_047_057_1${idx}_changes_code.tif CT/${idx}.dat
 
+#done
+var=0
+for idx in $(seq -f "%04g" ${start_slice} ${end_slice});do
+    echo $idx $var
+    gdal_translate -of ENVI ${org_image_dir}/Layer_*_scan_*_${idx}_changes_code.tif CT/${idx}.dat
+    let "var=var+1"
 done
 
-
-../marchingCubes
+echo 150 150 0.23 0.1 0.23 $start_slice $end_slice
+../marchingCubes 
